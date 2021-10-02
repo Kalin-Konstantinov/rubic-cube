@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": ""
+    "start": "node src/index.js"
   },
   "repository": {
     "type": "git",
@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/Kalin-Konstantinov/rubic-cube/issues"
   },
-  "homepage": "https://github.com/Kalin-Konstantinov/rubic-cube#readme"
+  "homepage": "https://github.com/Kalin-Konstantinov/rubic-cube#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
