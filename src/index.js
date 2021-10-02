@@ -5,8 +5,9 @@ const app = express();
 const port = 5000;
 
 handlebarsInitilization(app);
+app.use(express.static('./src/static'))
 
-app.all('/', (req, res) => {
+app.get('/', (req, res) => {
     res.render('index');
 })
 
