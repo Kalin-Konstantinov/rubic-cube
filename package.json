@@ -1,0 +1,20 @@
+{
+  "name": "rubic-cube",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kalin-Konstantinov/rubic-cube.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kalin-Konstantinov/rubic-cube/issues"
+  },
+  "homepage": "https://github.com/Kalin-Konstantinov/rubic-cube#readme"
+}
