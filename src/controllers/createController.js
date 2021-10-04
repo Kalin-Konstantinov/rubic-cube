@@ -8,8 +8,7 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
     addCube(req.body);
-    res.redirect('/create');
-    // console.log(req.body);
+    res.redirect('/');
 });
 
 module.exports = router;
