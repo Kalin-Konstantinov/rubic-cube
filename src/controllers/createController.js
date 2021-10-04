@@ -3,7 +3,7 @@ const addCube = require('../services/createCubeSevice');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    res.render('create');
+    res.render('create', { title: 'Create Cube' });
 });
 
 router.post('/', (req, res) => {
