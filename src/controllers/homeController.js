@@ -6,10 +6,10 @@ router.get('/', (req, res) => {
     res.render('index', { title: 'Home', ctx: cubes.getAllCubes() });
 });
 
-router.post('/', (req, res) => {
-    let name = req.body.search;
-    let from = req.body.from;
-    let to = req.body.to;
+router.get('/search', (req, res) => {
+    let name = req.query.search;
+    let from = req.query.from;
+    let to = req.query.to;
     let filtredCubes = cubes.getAllCubes().slice();
     if (name) {
         filtredCubes = filtredCubes.filter(x => x.name.toLocaleLowerCase() === name.toLocaleLowerCase());
