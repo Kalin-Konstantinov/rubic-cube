@@ -19,6 +19,7 @@
   "homepage": "https://github.com/Kalin-Konstantinov/rubic-cube#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "express-handlebars": "^5.3.4"
+    "express-handlebars": "^5.3.4",
+    "uniqid": "^5.4.0"
   }
 }
