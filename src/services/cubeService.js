@@ -12,7 +12,12 @@ const findCubeById = (id) => {
     return allCubes.filter(x => x.id == id)[0];
 }
 
+const getAllCubes = () => {
+    return allCubes
+}
+
 module.exports = {
     addCube,
-    findCubeById
+    findCubeById,
+    getAllCubes,
 };
