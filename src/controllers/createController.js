@@ -1,4 +1,5 @@
 const express = require('express');
+const addCube = require('../services/createCubeSevice');
 const router = express.Router();
 
 router.get('/', (req, res) => {
@@ -6,8 +7,9 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-    console.log(req.body);
-
-})
+    addCube(req.body);
+    res.redirect('/create');
+    // console.log(req.body);
+});
 
 module.exports = router;
