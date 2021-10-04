@@ -7,11 +7,11 @@ const about = require('./controllers/aboutController');
 const details = require('./controllers/detailsController');
 const notFound = require('./controllers/404Controller');
 
-router.use('/', home);
 router.use('/home', home);
 router.use('/create', create);
 router.use('/about', about);
 router.use('/details', details);
+router.use('/', home);
 router.use(notFound);
 
 module.exports = router;
