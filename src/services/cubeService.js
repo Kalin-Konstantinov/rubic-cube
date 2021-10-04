@@ -5,7 +5,6 @@ const allCubes = require("../db/dbCubes");
 const addCube = (cube) => {
     cube.id = uniqid();
     allCubes.push(cube);
-    console.log(allCubes);
 }
 
 const findCubeById = (id) => {
