@@ -8,5 +8,11 @@ const addCube = (cube) => {
     console.log(allCubes);
 }
 
+const findCubeById = (id) => {
+    return allCubes.filter(x => x.id == id)[0];
+}
 
-module.exports = addCube;
+module.exports = {
+    addCube,
+    findCubeById
+};
