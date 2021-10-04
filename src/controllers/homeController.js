@@ -12,7 +12,7 @@ router.get('/search', (req, res) => {
     let to = req.query.to;
     let filtredCubes = cubes.getAllCubes().slice();
     if (name) {
-        filtredCubes = filtredCubes.filter(x => x.name.toLocaleLowerCase() === name.toLocaleLowerCase());
+        filtredCubes = filtredCubes.filter(x => x.name.toLocaleLowerCase().includes(name.toLocaleLowerCase()));
     }
     if (from) {
         filtredCubes = filtredCubes.filter(x => Number(x.difficultyLevel) >= Number(from))
