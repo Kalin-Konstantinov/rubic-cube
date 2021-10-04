@@ -5,6 +5,7 @@ const app = express();
 const port = 5000;
 
 handlebarsInitilization(app);
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static('./src/static'));
 
 app.use(router);
