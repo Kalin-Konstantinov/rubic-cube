@@ -1,5 +1,5 @@
 const express = require('express');
-const addCube = require('../services/createCubeSevice');
+const addCube = require('../services/cubeService');
 const router = express.Router();
 
 router.get('/', (req, res) => {
