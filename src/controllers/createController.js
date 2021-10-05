@@ -1,5 +1,5 @@
 const express = require('express');
-const cubes = require('../services/cubeService');
+const dbCubes = require('../services/cubeService');
 const router = express.Router();
 
 router.get('/', (req, res) => {
@@ -7,8 +7,11 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-    cubes.addCube(req.body);
-    res.redirect('/');
+    dbCubes.addCube(req.body)
+        .then(cube => {
+            res.redirect('/');
+        })
+
 });
 
 module.exports = router;

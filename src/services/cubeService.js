@@ -1,18 +1,14 @@
-const allCubes = require("../db/dbCubes");
+const Cube = require('../models/cube');
 
 
-const addCube = (cube) => {
-    cube.id = uniqid();
-    allCubes.push(cube);
+const addCube = (cubeData) => {
+    let cube = new Cube(cubeData);
+    return cube.save();
 }
 
-const findCubeById = (id) => {
-    return allCubes.filter(x => x.id == id)[0];
-}
+const findCubeById = (id) => Cube.findById(id);
 
-const getAllCubes = () => {
-    return allCubes
-}
+const getAllCubes = () => Cube.find();
 
 module.exports = {
     addCube,
