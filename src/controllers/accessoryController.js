@@ -1,14 +1,17 @@
 const express = require('express');
 const router = express.Router();
+const accessory = require('../services/accessoryService');
 
 router.get('/add', (req, res) => {
     res.render('createAccessory')
 });
 
 router.post('/add', (req, res) => {
-    let a = req.body
-    console.log(a);
-    res.end()
+    accessory.addAccessory(req.body)
+        .then(x => {
+            console.log(x, '\naccessory has been added');
+            res.redirect('/')
+        })
 });
 
 module.exports = router;
