@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 router.get('/add', (req, res) => {
-    res.send('add accessory page')
+    res.render('createAccessory')
 })
 
 module.exports = router;
