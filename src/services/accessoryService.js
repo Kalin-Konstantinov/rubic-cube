@@ -5,6 +5,10 @@ const addAccessory = (accessoryData) => {
     return accessory.save();
 }
 
+const getAllAccessorys = () => {
+    
+}
+
 
 module.exports = {
     addAccessory,
