@@ -1,5 +1,5 @@
 const express = require('express');
-const dbCubes = require('../services/cubeService');
+const dbCubes = require('../../services/cubeService');
 const router = express.Router();
 
 router.get('/', (req, res) => {
