@@ -3,7 +3,7 @@ const router = express.Router();
 const accessory = require('../services/accessoryService');
 
 router.get('/create', (req, res) => {
-    res.render('createAccessory')
+    res.render('createAccessory', { title: 'Create Accessory'})
 });
 
 router.post('/create', (req, res) => {
