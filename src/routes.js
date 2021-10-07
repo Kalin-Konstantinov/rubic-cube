@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const home = require('./controllers/homeController');
-const cubeController = require('./controllers/cubeControllers/cubeController');
+const cubeController = require('./controllers/cubeControllers/router');
 const about = require('./controllers/aboutController');
 const accessory = require('./controllers/accessoryController');
 const notFound = require('./controllers/404Controller');
