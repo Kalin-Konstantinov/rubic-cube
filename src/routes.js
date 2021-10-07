@@ -4,7 +4,7 @@ const router = express.Router();
 const home = require('./controllers/homeController');
 const create = require('./controllers/createCubeController');
 const about = require('./controllers/aboutController');
-const details = require('./controllers/detailsController');
+const details = require('./controllers/detailsCubeController');
 const accessory = require('./controllers/accessoryController');
 const notFound = require('./controllers/404Controller');
 
