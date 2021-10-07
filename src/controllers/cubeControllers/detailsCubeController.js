@@ -9,7 +9,9 @@ router.get('/details', (req, res) => {
 });
 
 router.get('/add-accessory', (req, res) => {
-    res.render('attachAccessory')
+    const id = req.params.id;
+    dbCubes.findCubeById(id).lean()
+        .then(cube => res.render('attachAccessory', { title: 'Cube Accessory\'s', cube }));
 });
 
 module.exports = router;
