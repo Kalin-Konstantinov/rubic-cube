@@ -8,7 +8,7 @@ router.get('/details', (req, res) => {
         .then(cube => res.render('details', { title: 'Details', cube }));
 });
 
-router.get('/details/add-accessory', (req, res) => {
+router.get('/add-accessory', (req, res) => {
     res.render('attachAccessory')
 });
 
