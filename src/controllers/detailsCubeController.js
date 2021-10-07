@@ -1,8 +1,8 @@
 const express = require('express');
 const dbCubes = require('../services/cubeService');
-const router = express.Router();
+const router = express.Router({ mergeParams: true });
 
-router.get('/:id', (req, res) => {
+router.get('/details', (req, res) => {
     const id = req.params.id;
     dbCubes.findCubeById(id).lean()
         .then(cube => res.render('details', { title: 'Details', cube }));
