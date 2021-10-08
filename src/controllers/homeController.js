@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/search', (req, res) => {
-    dbCubes.getAllCubes()
+    dbCubes.getAllCubes().lean()
         .then((cubes) => {
             let name = req.query.search;
             let from = req.query.from;
