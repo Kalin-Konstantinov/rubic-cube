@@ -6,10 +6,11 @@ const addAccessory = (accessoryData) => {
 }
 
 const getAllAccessorys = () => {
-    
+    return Accessory.find({}).lean();
 }
 
 
 module.exports = {
     addAccessory,
+    getAllAccessorys,
 }
