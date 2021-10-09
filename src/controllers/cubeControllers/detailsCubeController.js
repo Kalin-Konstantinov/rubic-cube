@@ -16,8 +16,7 @@ router.get('/add-accessory', (req, res) => {
             getAllAccessorys()
                 .then(accessories => {
                     res.render('attachAccessory', { title: 'Cube Accessory\'s', cube, accessories });
-
-                })
+                });
         });
 });
 
