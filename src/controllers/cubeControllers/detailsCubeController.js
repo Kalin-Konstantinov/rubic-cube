@@ -25,8 +25,8 @@ router.post('/add-accessory', async (req, res) => {
     const cubeId = req.params.id
     let cube = await dbCubes.findCubeById(cubeId);
     cube.accessories.push(accessoryId);
-    cube.save()
-    res.redirect(`/cube/${cubeId}/details`)
+    cube.save();
+    res.redirect(`/cube/${cubeId}/details`);
 });
 
 module.exports = router;
