@@ -21,9 +21,10 @@ router.get('/add-accessory', (req, res) => {
 });
 
 router.post('/add-accessory', async (req, res) => {
-    const id = req.params.id;
-    let acc = await dbCubes.findCubeById(id).push()
-    console.log(acc)
+    const id = req.body;
+    // let acc = await dbCubes.findCubeById(id).push()
+    console.log(id)
+    res.end()
 });
 
 module.exports = router;

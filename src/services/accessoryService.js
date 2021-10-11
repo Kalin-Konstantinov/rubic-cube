@@ -9,9 +9,12 @@ const getAllAccessorys = () => {
     return Accessory.find({}).lean();
 }
 
-const findAccessory = (accessory)
+const findAccessory = (accessory) => {
+
+}
 
 module.exports = {
     addAccessory,
     getAllAccessorys,
+    findAccessory,
 }
