@@ -9,7 +9,7 @@ const getAllAccessorys = () => {
     return Accessory.find({}).lean();
 }
 
-const findAccessory = (accessory) => {
+const findAccessory = (accessoryId) => {
 
 }
 
