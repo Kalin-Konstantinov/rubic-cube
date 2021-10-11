@@ -9,6 +9,7 @@ const getAllAccessorys = () => {
     return Accessory.find({}).lean();
 }
 
+const findAccessory = (accessory)
 
 module.exports = {
     addAccessory,
