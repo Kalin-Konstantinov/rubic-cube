@@ -5,8 +5,11 @@ const router = express.Router({ mergeParams: true });
 
 router.get('/details', (req, res) => {
     const id = req.params.id;
-    dbCubes.findCubeById(id).lean()
-        .then(cube => res.render('details', { title: 'Details', cube }));
+    dbCubes.findCubeById(id).populate('accessories').lean()
+        .then(cube => {
+            console.log(cube.accessories);
+            res.render('details', { title: 'Details', cube })
+        });
 });
 
 router.get('/add-accessory', (req, res) => {
