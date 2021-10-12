@@ -9,7 +9,6 @@ router.get('/create', (req, res) => {
 router.post('/create', (req, res) => {
     accessory.addAccessory(req.body)
         .then(x => {
-            console.log(x, '\naccessory has been added');
             res.redirect('/')
         })
 });

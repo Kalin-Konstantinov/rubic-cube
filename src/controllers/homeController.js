@@ -3,14 +3,14 @@ const dbCubes = require('../services/cubeService');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    dbCubes.getAllCubes().lean()
+    dbCubes.getAllCubes()
         .then((cubes) => {
             res.render('index', { title: 'Home', ctx: cubes });
         })
 });
 
 router.get('/search', (req, res) => {
-    dbCubes.getAllCubes().lean()
+    dbCubes.getAllCubes()
         .then((cubes) => {
             let name = req.query.search;
             let from = req.query.from;

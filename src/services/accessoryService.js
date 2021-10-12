@@ -9,12 +9,13 @@ const getAllAccessorys = () => {
     return Accessory.find({}).lean();
 }
 
-const findAccessory = (accessoryId) => {
 
+const getFilteredAccessories = async (accessoryId) => {
+    return await Accessory.find().where('_id').nin(accessoryId).lean();
 }
 
 module.exports = {
     addAccessory,
     getAllAccessorys,
-    findAccessory,
+    getFilteredAccessories,
 }
