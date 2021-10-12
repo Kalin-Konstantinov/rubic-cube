@@ -17,12 +17,19 @@ const filterCubes = async (name, from, to) => {
         filtredCubes = filtredCubes.filter(x => x.name.toLowerCase().includes(name.toLowerCase()));
     }
     if (from) {
-        filtredCubes = filtredCubes.filter(x => Number(x.difficultyLevel) >= Number(from))
+        filtredCubes = filtredCubes.filter(x => Number(x.difficultyLevel) >= Number(from));
     }
     if (to) {
-        filtredCubes = filtredCubes.filter(x => Number(x.difficultyLevel) <= Number(to))
+        filtredCubes = filtredCubes.filter(x => Number(x.difficultyLevel) <= Number(to));
     }
     return filtredCubes;
+}
+
+const attachAccessoryToCube = async (cubeId, accessory) => {
+    let cube = await Cube.findById(cubeId);
+    cube.accessories.push(accessory);
+    cube.save();
+    console.log(cube);
 }
 
 module.exports = {
@@ -30,4 +37,5 @@ module.exports = {
     findCubeById,
     getAllCubes,
     filterCubes,
+    attachAccessoryToCube,
 };
