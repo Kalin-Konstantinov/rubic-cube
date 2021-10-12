@@ -13,7 +13,7 @@ router.get('/search', async (req, res) => {
     let name = req.query.search;
     let from = req.query.from;
     let to = req.query.to;
-    let filtredCubes = dbCubes.filterCubes(name, from, to);
+    let filtredCubes = await dbCubes.filterCubes(name, from, to);
     res.render('index', { title: 'Home', ctx: filtredCubes });
 })
 
