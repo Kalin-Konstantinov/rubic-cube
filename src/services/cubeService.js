@@ -14,7 +14,7 @@ const filterCubes = async (name, from, to) => {
 
     let filtredCubes = await Cube.find().lean();
     if (name) {
-        filtredCubes = filtredCubes.filter(x => x.name.toLocaleLowerCase().includes(name.toLocaleLowerCase()));
+        filtredCubes = filtredCubes.filter(x => x.name.toLowerCase().includes(name.toLowerCase()));
     }
     if (from) {
         filtredCubes = filtredCubes.filter(x => Number(x.difficultyLevel) >= Number(from))
