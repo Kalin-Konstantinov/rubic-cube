@@ -3,12 +3,10 @@ const { getOneAccessory, getFilteredAccessories } = require('../../services/acce
 const dbCubes = require('../../services/cubeService');
 const router = express.Router({ mergeParams: true });
 
-router.get('/details', (req, res) => {
+router.get('/details', async (req, res) => {
     const id = req.params.id;
-    dbCubes.findCubeById(id).populate('accessories').lean()
-        .then(cube => {
-            res.render('details', { title: 'Details', cube })
-        });
+    let cube = await dbCubes.findCubeById(id).populate('accessories').lean()
+    res.render('details', { title: 'Details', cube })
 });
 
 router.get('/add-accessory', async (req, res) => {
