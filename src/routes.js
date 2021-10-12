@@ -1,17 +1,19 @@
 const express = require('express');
 const router = express.Router();
 
-const home = require('./controllers/homeController');
+const homeController = require('./controllers/homeController');
 const cubeController = require('./controllers/cubeControllers/router');
-const about = require('./controllers/aboutController');
-const accessory = require('./controllers/accessoryController');
-const notFound = require('./controllers/404Controller');
+const aboutController = require('./controllers/aboutController');
+const accessoryController = require('./controllers/accessoryController');
+const notFoundController = require('./controllers/404Controller');
+const userController = require('./controllers/authController');
 
-router.use('/home', home);
+router.use('/home', homeController);
 router.use('/cube', cubeController);
-router.use('/about', about);
-router.use('/accessory', accessory);
-router.use('/', home);
-router.use(notFound);
+router.use('/about', aboutController);
+router.use('/accessory', accessoryController);
+router.use('/user', userController);
+router.use('/', homeController);
+router.use(notFoundController);
 
 module.exports = router;
