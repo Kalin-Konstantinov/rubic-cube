@@ -5,7 +5,7 @@ const userSchema = new mongoose.Schema({
     username: {
         type: String,
         required: true,
-        minLength: 5,
+        minLength: 2,
         unique: true,
     },
     password: {
@@ -15,9 +15,15 @@ const userSchema = new mongoose.Schema({
     }
 });
 
-userScerma.pre('save', async function (next) {
-    
-})
+userSchema.pre('save', async function (next) {
+    if (this.password.length < 6) {
+        return next();
+    }
+    let hash = await bcrypt.hash(this.password, 10)
+    this.password = hash;
+    console.log(hash);
+    next();
+});
 
 const User = mongoose.model('User', userSchema);
 
