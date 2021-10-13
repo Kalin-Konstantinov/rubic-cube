@@ -1,5 +1,5 @@
 const express = require('express');
-const { getOneAccessory, getFilteredAccessories } = require('../../services/accessoryService');
+const { getOneAccessory, getFilteredAccessoriesWhitout } = require('../../services/accessoryService');
 const dbCubes = require('../../services/cubeService');
 const router = express.Router({ mergeParams: true });
 
@@ -13,7 +13,7 @@ router.get('/add-accessory', async (req, res) => {
     const cubeId = req.params.id;
     let cube = await dbCubes.findCubeById(cubeId);
     let cubeAttachesAccessories = cube.accessories;
-    let accessories = await getFilteredAccessories(cubeAttachesAccessories);
+    let accessories = await getFilteredAccessoriesWhitout(cubeAttachesAccessories);
     res.render('attachAccessory', { title: 'Cube Accessory\'s', cube, accessories });
 });
 
