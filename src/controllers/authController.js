@@ -1,14 +1,14 @@
 const router = require('express').Router();
 
-const login = (req, res) => {
+const loginPage = (req, res) => {
     res.render('auth/login', { title: 'Login' });
 }
 
-const register = (req, res) => {
+const registerPage = (req, res) => {
     res.render('auth/register', { title: 'Register' });
 }
 
-router.get('/login', login);
-router.get('/register', register);
+router.get('/login', loginPage);
+router.get('/register', registerPage);
 
 module.exports = router;
