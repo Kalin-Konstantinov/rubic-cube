@@ -1,4 +1,6 @@
 const userController = require('../services/authService');
+const { USER_TOKEN_NAME } = require('../utility/constants');
+
 
 const router = require('express').Router();
 
@@ -15,7 +17,7 @@ const login = async (req, res) => {
     let token = await userController.login(req.body);
     
     if (token) {
-        res.cookie('user_token', token, { httpOnly: true });
+        res.cookie(USER_TOKEN_NAME, token, { httpOnly: true });
         res.redirect('/')
     } else {
         res.redirect('/404')

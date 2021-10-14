@@ -31,6 +31,12 @@ router.get('/edit', async (req, res) => {
 });
 
 router.get('/delete', async (req, res) => {
+    if(!req.user) {
+        res.redirect('/404')
+    }
     res.render('deleteCubePage');
 });
+
+
+
 module.exports = router;

@@ -4,13 +4,14 @@ const initDatabase = require('./config/database');
 const handlebarsInitilization = require('./config/handlebars');
 const router = require('./routes');
 const cookieParser = require('cookie-parser');
+const { auth } = require('./middlewares/authMiddlewares');
 const app = express();
 
 handlebarsInitilization(app);
 app.use(cookieParser());
+app.use(auth);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('./src/static'));
-
 app.use(router);
 
 initDatabase(settings.DB_CONNECTION_STRING)
@@ -18,4 +19,4 @@ initDatabase(settings.DB_CONNECTION_STRING)
         console.log('Database connected successfully.');
         app.listen(settings.PORT, () => { console.log(`Server is runing on port http://localhost:${settings.PORT}... \nTo stop the server press ctrl + C.`) });
     })
-    .catch(err => { console.error('Filed to connect to database' ,err)});
+    .catch(err => { console.error('Filed to connect to database', err) });
