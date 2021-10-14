@@ -18,7 +18,7 @@ const login = async (data) => {
     let username = user.username;
     let _id = user._id;
     let token = await jwtPromise({ username, _id });
-    return result;
+    return token;
 }
 
 

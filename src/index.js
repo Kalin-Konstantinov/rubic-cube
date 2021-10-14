@@ -3,9 +3,11 @@ const settings = require('./config/config');
 const initDatabase = require('./config/database');
 const handlebarsInitilization = require('./config/handlebars');
 const router = require('./routes');
+const cookieParser = require('cookie-parser');
 const app = express();
 
 handlebarsInitilization(app);
+app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('./src/static'));
 

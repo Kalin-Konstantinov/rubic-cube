@@ -12,8 +12,10 @@ const registerPage = (req, res) => {
 }
 
 const login = async (req, res) => {
-    let isCorrectUserInformation = await userController.login(req.body);
-    if (isCorrectUserInformation) {
+    let token = await userController.login(req.body);
+    
+    if (token) {
+        res.cookie('user_token', token, { httpOnly: true });
         res.redirect('/')
     } else {
         res.redirect('/404')
