@@ -25,4 +25,12 @@ router.post('/add-accessory', async (req, res) => {
     res.redirect(`/cube/${cubeId}/details`);
 });
 
+
+router.get('/edit', async (req, res) => {
+    res.render('editCubePage');
+});
+
+router.get('/delete', async (req, res) => {
+    
+});
 module.exports = router;
