@@ -8,10 +8,16 @@ const loginPage = (req, res) => {
 
 const registerPage = (req, res) => {
     res.render('auth/register', { title: 'Register' });
+
 }
 
-const login = (req, res) => {
-    console.log(req.body);
+const login = async (req, res) => {
+    let isCorrectUserInformation = await userController.login(req.body);
+    if (isCorrectUserInformation) {
+        res.redirect('/')
+    } else {
+        res.redirect('/404')
+    }
 }
 
 const register = (req, res) => {
