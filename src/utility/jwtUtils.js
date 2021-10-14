@@ -1,9 +1,9 @@
 const  jwt = require('jsonwebtoken');
 const { SECRET } = require('./constants');
 
-const jwtPromise = (user) => {
+const jwtPromise = (userData) => {
     return new Promise((resolve, reject) => {
-        jwt.sign((user), SECRET, (err, token) => {
+        jwt.sign(userData, SECRET, (err, token) => {
             if(err) {
                 return reject(err);
             }

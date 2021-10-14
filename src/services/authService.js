@@ -8,12 +8,16 @@ const createUser = async (username, password) => {
 
 const login = async (data) => {
     const user = await User.findOne({ username: data.username });
+    if(!user) {
+        return false;
+    }
     let result = await bcrypt.compare(data.password, user.password);
-    if(!result){
+    if (!result) {
         return result;
     }
-    let token = await jwtPromise(data.username);
-    console.log(token);
+    let username = user.username;
+    let _id = user._id;
+    let token = await jwtPromise({ username, _id });
     return result;
 }
 
