@@ -31,6 +31,6 @@ router.get('/edit', async (req, res) => {
 });
 
 router.get('/delete', async (req, res) => {
-    
+    res.render('deleteCubePage');
 });
 module.exports = router;
