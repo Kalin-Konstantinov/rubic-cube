@@ -30,9 +30,9 @@ router.get('/edit', async (req, res) => {
     res.render('editCubePage');
 });
 
-router.get('/delete', (req, res) => {
+router.get('/delete',async (req, res) => {
     if(!req.user) {
-        res.redirect('/404')
+        res.redirect('/login')
     }
     res.render('deleteCubePage');
 });
