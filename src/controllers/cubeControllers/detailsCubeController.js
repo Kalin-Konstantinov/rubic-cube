@@ -10,7 +10,7 @@ router.get('/details', async (req, res) => {
     res.render('details', { title: 'Details', cube })
 });
 
-router.get('/add-accessory', async (req, res) => {
+router.get('/add-accessory', isAuth, async (req, res) => {
     const cubeId = req.params.id;
     let cube = await dbCubes.findCubeById(cubeId);
     let cubeAttachesAccessories = cube.accessories;
@@ -18,7 +18,7 @@ router.get('/add-accessory', async (req, res) => {
     res.render('attachAccessory', { title: 'Cube Accessory\'s', cube, accessories });
 });
 
-router.post('/add-accessory', async (req, res) => {
+router.post('/add-accessory', isAuth ,async (req, res) => {
     const accessoryId = req.body.accessory;
     const cubeId = req.params.id
     const accessory = await getOneAccessory(accessoryId);
@@ -27,7 +27,7 @@ router.post('/add-accessory', async (req, res) => {
 });
 
 
-router.get('/edit', isAuth , (req, res) => {
+router.get('/edit', isAuth, (req, res) => {
     res.render('editCubePage');
 });
 
