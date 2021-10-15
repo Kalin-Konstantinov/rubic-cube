@@ -21,7 +21,15 @@ const isAuth = (req, res, next) => {
     next();
 }
 
+const isNotAuth = (req, res, next) => {
+    if (req.user) {
+        return res.redirect('/');
+    }
+    next();
+}
+
 module.exports = {
     auth,
-    isAuth
+    isAuth,
+    isNotAuth,
 };

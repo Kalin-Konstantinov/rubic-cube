@@ -1,8 +1,11 @@
+const { isNotAuth } = require('../middlewares/authMiddlewares');
 const userController = require('../services/authService');
 const { USER_TOKEN_NAME } = require('../utility/constants');
 
 
 const router = require('express').Router();
+
+router.use(isNotAuth);
 
 const loginPage = (req, res) => {
     res.render('auth/login', { title: 'Login' });
