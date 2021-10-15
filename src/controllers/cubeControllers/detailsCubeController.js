@@ -1,7 +1,8 @@
 const express = require('express');
+const router = express.Router({ mergeParams: true });
 const { getOneAccessory, getFilteredAccessoriesWithout } = require('../../services/accessoryService');
 const dbCubes = require('../../services/cubeService');
-const router = express.Router({ mergeParams: true });
+const { isAuth } = require('../../middlewares/authMiddlewares');
 
 router.get('/details', async (req, res) => {
     const id = req.params.id;
@@ -26,14 +27,11 @@ router.post('/add-accessory', async (req, res) => {
 });
 
 
-router.get('/edit', async (req, res) => {
+router.get('/edit', isAuth , (req, res) => {
     res.render('editCubePage');
 });
 
-router.get('/delete',async (req, res) => {
-    if(!req.user) {
-        res.redirect('/login')
-    }
+router.get('/delete', isAuth, (req, res) => {
     res.render('deleteCubePage');
 });
 

@@ -8,12 +8,20 @@ const auth = (req, res, next) => {
         return next();
     }
     jwtVerify(token)
-        .then(user =>{
+        .then(user => {
             req.user = user;
             next();
         })
 }
 
+const isAuth = (req, res, next) => {
+    if (!req.user) {
+        return res.status(401).redirect('/user/login');
+    }
+    next();
+}
+
 module.exports = {
     auth,
+    isAuth
 };
