@@ -9,9 +9,9 @@ const app = express();
 
 handlebarsInitilization(app);
 app.use(cookieParser());
-app.use(auth);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('./src/static'));
+app.use(auth);
 app.use(router);
 
 initDatabase(settings.DB_CONNECTION_STRING)

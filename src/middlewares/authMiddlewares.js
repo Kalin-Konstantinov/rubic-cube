@@ -10,10 +10,11 @@ const auth = async (req, res, next) => {
     try {
         let user = await jwtVerify(token)
         req.user = user;
-        next();
     } catch (error) {
+        console.log(error);
         res.redirect('/404');
     }
+    next();
 
 }
 
