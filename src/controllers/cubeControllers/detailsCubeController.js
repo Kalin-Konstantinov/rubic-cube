@@ -30,7 +30,15 @@ router.post('/add-accessory', isAuth, isCreator, async (req, res) => {
 
 
 router.get('/edit', isAuth, isCreator, (req, res) => {
-    res.render('editCubePage');
+    const cubeId = req.params.id;
+    dbCubes.findCubeById(cubeId)
+        .then(cube => {
+            res.render('editCubePage', { title: 'Edit', cube });
+        })
+});
+
+router.post('/edit', (req, res) => {
+
 });
 
 router.get('/delete', isAuth, isCreator, (req, res) => {
