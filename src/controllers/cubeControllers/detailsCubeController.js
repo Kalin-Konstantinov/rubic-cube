@@ -5,7 +5,7 @@ const dbCubes = require('../../services/cubeService');
 const { isAuth, isCreator } = require('../../middlewares/authMiddlewares');
 
 router.get('/details', async (req, res) => {
-    const userId = req.user._id
+    const userId = req.user ? req.user._id : '';
     const cubeId = req.params.id;
     let cube = await dbCubes.findCubeById(cubeId).populate('accessories').lean()
     const isCreatorOfCube = userId == cube.ownerId;
