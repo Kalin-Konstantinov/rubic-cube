@@ -34,7 +34,7 @@ router.get('/edit', isAuth, isCreator, (req, res) => {
     dbCubes.findCubeById(cubeId)
         .then(cube => {
             res.render('editCubePage', { title: 'Edit', cube });
-        })
+        });
 });
 
 router.post('/edit', isAuth, isCreator, (req, res) => {
@@ -54,7 +54,11 @@ router.post('/edit', isAuth, isCreator, (req, res) => {
 });
 
 router.get('/delete', isAuth, isCreator, (req, res) => {
-    res.render('deleteCubePage');
+    const cubeId = req.params.id;
+    dbCubes.findCubeById(cubeId)
+        .then(cube => {
+            res.render('deleteCubePage', {title: 'Delete', cube});
+        });
 });
 
 
