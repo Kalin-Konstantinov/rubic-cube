@@ -25,6 +25,10 @@ const filterCubes = async (name, from, to) => {
     return filtredCubes;
 }
 
+const editCube = (cubeId, updatedCube) => {
+    return Cube.findOneAndUpdate({ _id: cubeId }, updatedCube);
+}
+
 const attachAccessoryToCube = async (cubeId, accessory) => {
     let cube = await Cube.findById(cubeId);
     cube.accessories.push(accessory);
@@ -38,4 +42,5 @@ module.exports = {
     getAllCubes,
     filterCubes,
     attachAccessoryToCube,
+    editCube,
 };

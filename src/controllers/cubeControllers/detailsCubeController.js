@@ -38,7 +38,20 @@ router.get('/edit', isAuth, isCreator, (req, res) => {
 });
 
 router.post('/edit', (req, res) => {
-
+    const cubeId = req.params.id;
+    console.log(req.body);
+    const name = req.body.name;
+    const description = req.body.description;
+    const imageUrl = req.body.imageUrl;
+    const difficultyLevel = req.body.difficultyLevel;
+    const updatedCube = {
+        name,
+        description,
+        imageUrl,
+        difficultyLevel,
+    }
+    dbCubes.editCube(cubeId, updatedCube)
+        .then(() => res.redirect('/'));
 });
 
 router.get('/delete', isAuth, isCreator, (req, res) => {
