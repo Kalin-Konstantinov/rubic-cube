@@ -5,9 +5,11 @@ const dbCubes = require('../../services/cubeService');
 const { isAuth, isCreator } = require('../../middlewares/authMiddlewares');
 
 router.get('/details', async (req, res) => {
-    const id = req.params.id;
-    let cube = await dbCubes.findCubeById(id).populate('accessories').lean()
-    res.render('details', { title: 'Details', cube })
+    const userId = req.user._id
+    const cubeId = req.params.id;
+    let cube = await dbCubes.findCubeById(cubeId).populate('accessories').lean()
+    const isCreatorOfCube = userId == cube.ownerId;
+    res.render('details', { title: 'Details', cube, isCreatorOfCube })
 });
 
 router.get('/add-accessory', isAuth, isCreator, async (req, res) => {
