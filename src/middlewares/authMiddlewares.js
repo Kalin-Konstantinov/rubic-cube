@@ -10,6 +10,7 @@ const auth = (req, res, next) => {
     }
     jwtVerify(token)
         .then(user => {
+            res.locals.isLogged = true;
             req.user = user;
             next();
         })
