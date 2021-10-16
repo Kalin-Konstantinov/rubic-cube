@@ -10,7 +10,19 @@ const renderCreatePage = (req, res) => {
 }
 
 const createCube = (req, res) => {
-    dbCubes.addCube(req.body)
+    const ownerId = req.user._id;
+    const name = req.body.name;
+    const description = req.body.description;
+    const imageUrl = req.body.imageUrl;
+    const difficultyLevel = req.body.difficultyLevel;
+    const data = {
+        ownerId,
+        name,
+        description,
+        imageUrl,
+        difficultyLevel,
+    }
+    dbCubes.addCube(data)
         .then(cube => {
             res.redirect('/');
         })
