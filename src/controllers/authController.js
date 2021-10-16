@@ -42,6 +42,6 @@ router.get('/login', isNotAuth, loginPage);
 router.get('/register', isNotAuth, registerPage);
 router.post('/login', isNotAuth, login);
 router.post('/register', isNotAuth, register);
-router.post('/logout', logout);
+router.get('/logout', logout);
 
 module.exports = router;
