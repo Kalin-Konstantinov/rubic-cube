@@ -29,6 +29,10 @@ const editCube = (cubeId, updatedCube) => {
     return Cube.findOneAndUpdate({ _id: cubeId }, updatedCube);
 }
 
+const deleteCube = (cubeId) => {
+    return Cube.findOneAndDelete({ _id: cubeId });
+}
+
 const attachAccessoryToCube = async (cubeId, accessory) => {
     let cube = await Cube.findById(cubeId);
     cube.accessories.push(accessory);
@@ -43,4 +47,5 @@ module.exports = {
     filterCubes,
     attachAccessoryToCube,
     editCube,
+    deleteCube,
 };

@@ -57,10 +57,15 @@ router.get('/delete', isAuth, isCreator, (req, res) => {
     const cubeId = req.params.id;
     dbCubes.findCubeById(cubeId)
         .then(cube => {
-            res.render('deleteCubePage', {title: 'Delete', cube});
+            res.render('deleteCubePage', { title: 'Delete', cube });
         });
 });
 
+router.post('/delete', isAuth, isCreator, (req, res) => {
+    const cubeId = req.params.id;
+    dbCubes.deleteCube(cubeId)
+        .then(() => res.redirect(`/`));
+});
 
 
 module.exports = router;
