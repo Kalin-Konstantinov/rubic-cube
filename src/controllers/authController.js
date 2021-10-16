@@ -1,11 +1,10 @@
-const { isNotAuth } = require('../middlewares/authMiddlewares');
+const { isNotAuth, isAuth } = require('../middlewares/authMiddlewares');
 const userController = require('../services/authService');
 const { USER_TOKEN_NAME } = require('../utility/constants');
 
 
 const router = require('express').Router();
 
-router.use(isNotAuth);
 
 const loginPage = (req, res) => {
     res.render('auth/login', { title: 'Login' });
@@ -18,7 +17,7 @@ const registerPage = (req, res) => {
 
 const login = async (req, res) => {
     let token = await userController.login(req.body);
-    
+
     if (token) {
         res.cookie(USER_TOKEN_NAME, token, { httpOnly: true });
         res.redirect('/')
@@ -34,9 +33,15 @@ const register = (req, res) => {
 
 }
 
-router.get('/login', loginPage);
-router.get('/register', registerPage);
-router.post('/login', login);
-router.post('/register', register);
+const logout = (req, res) => {
+    res.clearCookie(USER_TOKEN_NAME);
+    res.redirect('/');
+}
+
+router.get('/login', isNotAuth, loginPage);
+router.get('/register', isNotAuth, registerPage);
+router.post('/login', isNotAuth, login);
+router.post('/register', isNotAuth, register);
+router.post('/logout', logout);
 
 module.exports = router;
