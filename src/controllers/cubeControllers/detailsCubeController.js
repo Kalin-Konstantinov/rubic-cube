@@ -37,9 +37,8 @@ router.get('/edit', isAuth, isCreator, (req, res) => {
         })
 });
 
-router.post('/edit', (req, res) => {
+router.post('/edit', isAuth, isCreator, (req, res) => {
     const cubeId = req.params.id;
-    console.log(req.body);
     const name = req.body.name;
     const description = req.body.description;
     const imageUrl = req.body.imageUrl;
@@ -51,7 +50,7 @@ router.post('/edit', (req, res) => {
         difficultyLevel,
     }
     dbCubes.editCube(cubeId, updatedCube)
-        .then(() => res.redirect('/'));
+        .then(() => res.redirect(`/cube/${cubeId}/details`));
 });
 
 router.get('/delete', isAuth, isCreator, (req, res) => {
