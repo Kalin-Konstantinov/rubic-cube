@@ -18,6 +18,7 @@ const login = async (data) => {
             throw { code: 403, message: 'User or password incorrect' }
         }
         let _id = user._id;
+        let username = user.username;
         let token = await jwtPromise({ username, _id });
         return token;
     } catch (err) {

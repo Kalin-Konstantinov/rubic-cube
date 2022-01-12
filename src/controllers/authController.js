@@ -16,13 +16,13 @@ const registerPage = (req, res) => {
 }
 
 const login = async (req, res) => {
-    let token = await authService.login(req.body);
-
-    if (token) {
+    try {
+        let token = await authService.login(req.body);
         res.cookie(USER_TOKEN_NAME, token, { httpOnly: true });
         res.redirect('/')
-    } else {
-        res.redirect('/404')
+    } catch (err) {
+        console.log(err);
+        res.render('404', { error: err.message});
     }
 }
 
