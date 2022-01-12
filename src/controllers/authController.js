@@ -21,15 +21,18 @@ const login = async (req, res) => {
         res.cookie(USER_TOKEN_NAME, token, { httpOnly: true });
         res.redirect('/')
     } catch (err) {
-        console.log(err);
         res.render('404', { error: err.message});
     }
 }
 
-const register = (req, res) => {
+const register = async (req, res) => {
     const { username, password } = req.body;
-    authService.createUser(username, password)
-    res.redirect('/user/login')
+    try {
+        await authService.createUser(username, password)
+        res.redirect('/user/login')
+    } catch (err) {
+        res.render('404', { error: err.message})
+    }
 
 }
 

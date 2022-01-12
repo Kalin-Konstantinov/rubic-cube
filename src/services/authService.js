@@ -3,7 +3,15 @@ const bcrypt = require('bcrypt');
 const { jwtPromise } = require('../utility/jwtUtils');
 
 const createUser = async (username, password) => {
-    await User.create({ username, password });
+    try {
+        await User.create({ username, password });
+    } catch (err) {
+        if (err.code == 11000) {
+            throw { message: 'User already exists.' };
+        };
+        const mongoErrMessage = Object.values(err.errors)[0].properties.message;
+        throw { message: mongoErrMessage };
+    }
 }
 
 const login = async (data) => {
@@ -22,7 +30,7 @@ const login = async (data) => {
         let token = await jwtPromise({ username, _id });
         return token;
     } catch (err) {
-       throw err;
+        throw err;
     }
 }
 
