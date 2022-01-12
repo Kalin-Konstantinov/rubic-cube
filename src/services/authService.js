@@ -7,18 +7,22 @@ const createUser = async (username, password) => {
 }
 
 const login = async (data) => {
-    const user = await User.findOne({ username: data.username });
-    if(!user) {
-        return false;
+
+    try {
+        const user = await User.findOne({ username: data.username });
+        if (user == null) {
+            throw { code: 403, message: 'User or password incorrect' }
+        }
+        let isValidUserData = await bcrypt.compare(data.password, user.password);
+        if (isValidUserData == false) {
+            throw { code: 403, message: 'User or password incorrect' }
+        }
+        let _id = user._id;
+        let token = await jwtPromise({ username, _id });
+        return token;
+    } catch (err) {
+       throw err;
     }
-    let result = await bcrypt.compare(data.password, user.password);
-    if (!result) {
-        return result;
-    }
-    let username = user.username;
-    let _id = user._id;
-    let token = await jwtPromise({ username, _id });
-    return token;
 }
 
 
