@@ -1,5 +1,5 @@
 const { isNotAuth, isAuth } = require('../middlewares/authMiddlewares');
-const userController = require('../services/authService');
+const authService = require('../services/authService');
 const { USER_TOKEN_NAME } = require('../utility/constants');
 
 
@@ -16,7 +16,7 @@ const registerPage = (req, res) => {
 }
 
 const login = async (req, res) => {
-    let token = await userController.login(req.body);
+    let token = await authService.login(req.body);
 
     if (token) {
         res.cookie(USER_TOKEN_NAME, token, { httpOnly: true });
@@ -28,7 +28,7 @@ const login = async (req, res) => {
 
 const register = (req, res) => {
     const { username, password } = req.body;
-    userController.createUser(username, password)
+    authService.createUser(username, password)
     res.redirect('/user/login')
 
 }
