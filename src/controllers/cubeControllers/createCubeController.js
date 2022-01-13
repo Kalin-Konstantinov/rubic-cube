@@ -26,6 +26,9 @@ const createCube = (req, res) => {
         .then(cube => {
             res.redirect('/');
         })
+        .catch(error => {
+
+        })
 
 }
 

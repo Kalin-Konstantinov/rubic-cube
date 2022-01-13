@@ -1,9 +1,9 @@
 const Cube = require('../models/cube');
 
 
-const addCube = (cubeData) => {
+const addCube = async (cubeData) => {
     let cube = new Cube(cubeData);
-    return cube.save();
+    return await cube.save();
 }
 
 const findCubeById = (id) => Cube.findById(id).lean();
