@@ -2,6 +2,7 @@ const express = require('express');
 const dbCubes = require('../../services/cubeService');
 const router = express.Router();
 const { isAuth } = require('../../middlewares/authMiddlewares');
+const { extractMongoErrorMessage } = require('../../utility/mongoDBErrorMessageExtractor');
 
 router.use(isAuth);
 
@@ -26,8 +27,9 @@ const createCube = (req, res) => {
         .then(cube => {
             res.redirect('/');
         })
-        .catch(error => {
-
+        .catch(err => {
+            const mongoErrMessage = extractMongoErrorMessage(err)
+            res.render('create', { error: { message: mongoErrMessage }, title: 'Create Cube' })
         })
 
 }

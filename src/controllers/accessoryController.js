@@ -11,6 +11,9 @@ router.post('/create', (req, res) => {
         .then(x => {
             res.redirect('/')
         })
+        .catch(err => {
+            
+        })
 });
 
 

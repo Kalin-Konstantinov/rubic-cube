@@ -9,6 +9,17 @@ body {
 main {
     min-height: 75vh;
 }
+
+.error-message {
+    background-color: red;
+    color: white;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    text-align: center;
+    text-transform: bold;
+}
+
 header ul {
     margin: 0;
 }
