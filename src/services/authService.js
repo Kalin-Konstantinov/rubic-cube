@@ -1,6 +1,7 @@
 const User = require('../models/user');
 const bcrypt = require('bcrypt');
 const { jwtPromise } = require('../utility/jwtUtils');
+const { extractMongoErrorMessage } = require('../utility/mongoDBErrorMessageExtractor');
 
 const createUser = async (username, password) => {
     try {
@@ -9,7 +10,7 @@ const createUser = async (username, password) => {
         if (err.code == 11000) {
             throw { message: 'User already exists.' };
         };
-        const mongoErrMessage = Object.values(err.errors)[0].properties.message;
+        const mongoErrMessage = extractMongoErrorMessage(err);
         throw { message: mongoErrMessage };
     }
 }
