@@ -33,7 +33,7 @@ Guest users can access all views and search functionality. They can not access c
 
 ### Registred Users
 
-Hava got the whole guest users` functionality in addition they can create cubes or accessories. They can not edit or delete other users` cubes.
+Hava got the whole guest users functionality in addition they can create cubes or accessories. They can not edit or delete other users cubes.
 
 ### Owner cube
 
