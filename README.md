@@ -4,14 +4,14 @@ You need mongoDB installed to start the application.
 
 ## Used technologies to build this application
 
--NodeJS
--Express
--MongoDB
--Mongoose
--Handlebars
--Json Web Token
--Bcrypt
--Cookie Parser
+ -NodeJS
+ -Express
+ -MongoDB
+ -Mongoose
+ -Handlebars
+ -Json Web Token
+ -Bcrypt
+ -Cookie Parser
 
 ## About
 
